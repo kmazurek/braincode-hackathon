@@ -1,16 +1,15 @@
 package com.zakaprov.braincodemobihackathon.model;
 
-import com.zakaprov.braincodemobihackathon.network.rest.NetworkCallback;
-
 public class AllegroQuery
 {
     public String queryString;
     public String allegroCategory;
     public String readableCategory;
 
-    private void getData(NetworkCallback<Auction[]> callback)
+    public Auction[] getData()
     {
-
+        // TODO synchronously download data
+        return null;
     }
 
     public AllegroQuery(String queryString, String allegroCategory, String readableCategory) {

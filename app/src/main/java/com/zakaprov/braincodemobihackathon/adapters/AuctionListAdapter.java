@@ -10,15 +10,14 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.zakaprov.braincodemobihackathon.R;
-import com.zakaprov.braincodemobihackathon.model.Interest;
+import com.zakaprov.braincodemobihackathon.model.Auction;
 
-public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHolder>
+public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.ViewHolder>
 {
-    private Interest[] mDataset;
+    private Auction[] mDataset;
     private Context mContext;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         public TextView mTextView;
         public ImageView mImageView;
 
@@ -29,14 +28,15 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         }
     }
 
-    public MainListAdapter(Interest[] myDataset, Context context) {
+    public AuctionListAdapter(Auction[] myDataset, Context context) {
         mDataset = myDataset;
         mContext = context;
     }
 
     @Override
-    public MainListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public AuctionListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                         int viewType) {
+        // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_row, parent, false);
 
@@ -46,10 +46,10 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Interest currentInterest = mDataset[position];
+        Auction currentAuction = mDataset[position];
 
-        holder.mTextView.setText(currentInterest.getFancyText() + " " + currentInterest.getName());
-        Picasso.with(mContext).load(currentInterest.getImageUrl()).centerCrop().fit().into(holder.mImageView);
+        holder.mTextView.setText(currentAuction.getTitle());
+        Picasso.with(mContext).load(currentAuction.getImageUrl()).centerCrop().fit().into(holder.mImageView);
     }
 
     @Override

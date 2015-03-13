@@ -8,21 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zakaprov.braincodemobihackathon.MainActivity;
 import com.zakaprov.braincodemobihackathon.R;
-import com.zakaprov.braincodemobihackathon.adapters.MainListAdapter;
+import com.zakaprov.braincodemobihackathon.adapters.AuctionListAdapter;
+import com.zakaprov.braincodemobihackathon.callbacks.InterestAuctionsCallback;
+import com.zakaprov.braincodemobihackathon.model.Auction;
 import com.zakaprov.braincodemobihackathon.model.Interest;
-import com.zakaprov.braincodemobihackathon.model.InterestContainer;
-import com.zakaprov.braincodemobihackathon.callbacks.InterestContainerCallback;
 
-public class MainListFragment extends Fragment
+public class AuctionListFragment extends Fragment
 {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private Interest[] dataSource;
+    private Auction[] dataSource;
 
-    private static final int NUMBER_OF_COLUMNS = 1;
+    private static final int NUMBER_OF_COLUMNS = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -33,10 +34,12 @@ public class MainListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        InterestContainer interestContainer = new InterestContainer();
-        interestContainer.getInterestsAsync(new MainListCallback());
+        MainActivity activity = (MainActivity) getActivity();
+        Interest chosenInterest = activity.getChosenInterest();
 
-        View layout = inflater.inflate(R.layout.main_list_fragment, container, false);
+        chosenInterest.getAuctionsAsync(new AuctionListCallback());
+
+        View layout = inflater.inflate(R.layout.auction_list_fragment, container, false);
 
         mRecyclerView = (RecyclerView) layout.findViewById(R.id.mainRecyclerView);
 
@@ -46,14 +49,14 @@ public class MainListFragment extends Fragment
         return layout;
     }
 
-    private class MainListCallback implements InterestContainerCallback
+    private class AuctionListCallback implements InterestAuctionsCallback
     {
         @Override
-        public void onDownloadComplete(Interest[] result)
+        public void onDownloadComplete(Auction[] result)
         {
             dataSource = result;
 
-            mAdapter = new MainListAdapter(dataSource, getActivity());
+            mAdapter = new AuctionListAdapter(dataSource, getActivity());
             mRecyclerView.setAdapter(mAdapter);
         }
     }

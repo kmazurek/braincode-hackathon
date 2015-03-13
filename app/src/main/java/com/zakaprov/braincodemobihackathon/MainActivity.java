@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.zakaprov.braincodemobihackathon.fragments.MainListFragment;
+import com.zakaprov.braincodemobihackathon.model.Interest;
 
 
 public class MainActivity extends ActionBarActivity
@@ -20,6 +21,8 @@ public class MainActivity extends ActionBarActivity
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private String[] mNavigationItems;
+
+    private Interest chosenInterest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class MainActivity extends ActionBarActivity
         mDrawerList = (ListView) findViewById(R.id.navigationDrawer);
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, mNavigationItems));
+        mDrawerList.setOnItemClickListener(new NavigationDrawerListener());
     }
 
     private class NavigationDrawerListener implements AdapterView.OnItemClickListener
@@ -61,6 +65,16 @@ public class MainActivity extends ActionBarActivity
             getActionBar().setTitle(mNavigationItems[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
         }
+    }
+
+    public Interest getChosenInterest()
+    {
+        return chosenInterest;
+    }
+
+    public void setChosenInterest(Interest interest)
+    {
+        chosenInterest = interest;
     }
 
     @Override

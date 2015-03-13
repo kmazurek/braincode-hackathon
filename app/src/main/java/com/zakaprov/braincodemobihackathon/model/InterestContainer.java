@@ -1,6 +1,6 @@
 package com.zakaprov.braincodemobihackathon.model;
 
-import com.zakaprov.braincodemobihackathon.util.InterestContainerCallback;
+import com.zakaprov.braincodemobihackathon.callbacks.InterestContainerCallback;
 
 public class InterestContainer
 {
