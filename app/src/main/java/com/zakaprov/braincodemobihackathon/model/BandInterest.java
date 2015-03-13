@@ -27,6 +27,5 @@ private static String[] fancyStrings = {"Blablabla fancy", "Get tickets", "So on
         tab[3] = new AllegroQuery(this.title + " płyta winylowa", "0", "płyta");
         tab[4] = new AllegroQuery(this.title + " kubek", "0", "kubki");
         return tab;
-
     }
 }
