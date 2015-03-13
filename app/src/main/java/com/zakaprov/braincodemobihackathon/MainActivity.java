@@ -1,5 +1,6 @@
 package com.zakaprov.braincodemobihackathon;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -18,33 +19,49 @@ public class MainActivity extends ActionBarActivity
 {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+    private String[] mNavigationItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] values = getResources().getStringArray(R.array.array_navigation_drawer_items);
+        mNavigationItems = getResources().getStringArray(R.array.array_navigation_drawer_items);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mDrawerList = (ListView) findViewById(R.id.navigationDrawer);
 
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, values));
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MainListFragment frag = new MainListFragment();
-
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, frag)
-                        .commit();
-
-                mDrawerList.setItemChecked(position, true);
-                mDrawerLayout.closeDrawer(mDrawerList);
-            }
-        });
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, mNavigationItems));
     }
 
+    private class NavigationDrawerListener implements AdapterView.OnItemClickListener
+    {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+        {
+            Fragment chosenFragment = null;
+
+                switch(position)
+                {
+                    case 0:
+                    chosenFragment = new MainListFragment();
+                    break;
+
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                }
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, chosenFragment)
+                    .commit();
+
+            mDrawerList.setItemChecked(position, true);
+            getActionBar().setTitle(mNavigationItems[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)

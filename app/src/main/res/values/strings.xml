@@ -5,10 +5,10 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="array_navigation_drawer_items">
-        <item>Element 1</item>
-        <item>Element 2</item>
-        <item>Element 3</item>
-        <item>Element 4</item>
-        <item>Element 5</item>
+        <item>Feed</item>
+        <item>Sources</item>
+        <item>Settings</item>
+        <item>Logout</item>
+        <item>Send feedback</item>
     </string-array>
 </resources>
