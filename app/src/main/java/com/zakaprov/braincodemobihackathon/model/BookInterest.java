@@ -14,7 +14,7 @@ public class BookInterest extends Interest {
         int idx = new Random().nextInt(fancyStrings.length);
         String random = (fancyStrings[idx]);
         this.setFancyText(random);
-        this.setImageUrl(title.replace(' ', '_') + ".jpg");
+        this.setImageUrl(title.toLowerCase().replace(' ', '_') + ".jpg");
     }
 
     @Override
