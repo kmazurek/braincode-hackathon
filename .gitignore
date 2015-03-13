@@ -1,0 +1,8 @@
+.gradle
+/local.properties
+.DS_Store
+/build
+/.idea
+braincode-mobi-hackathon.iml
+bin/
+gen/

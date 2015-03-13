@@ -1,0 +1,6 @@
+/build
+gen
+bin
+.gradle
+/local.properties
+/.idea
