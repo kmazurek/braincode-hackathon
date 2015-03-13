@@ -6,3 +6,12 @@
 braincode-mobi-hackathon.iml
 bin/
 gen/
+.idea/gradle.xml
+
+.idea/misc.xml
+
+.idea/modules.xml
+
+app/app.iml
+
+braincode-hackathon.iml
