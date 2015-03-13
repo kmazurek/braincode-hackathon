@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 
 import com.zakaprov.braincodemobihackathon.R;
 import com.zakaprov.braincodemobihackathon.adapters.MainListAdapter;
+import com.zakaprov.braincodemobihackathon.model.Interest;
+import com.zakaprov.braincodemobihackathon.model.InterestContainer;
+import com.zakaprov.braincodemobihackathon.util.InterestContainerCallback;
 
 import java.util.Random;
 
@@ -19,7 +22,9 @@ public class MainListFragment extends Fragment
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private static final int NUMBER_OF_COLUMNS = 2;
+    private Interest[] dataSource;
+
+    private static final int NUMBER_OF_COLUMNS = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -30,11 +35,8 @@ public class MainListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        String[] sources = new String[15];
-        Random rand = new Random();
-
-            for (int i = 0; i < sources.length; i++)
-                sources[i] = "http://www.placecage.com/c/" + (rand.nextInt(200) + 300) + "/" + (rand.nextInt(200) + 300);
+        InterestContainer interestContainer = new InterestContainer();
+        interestContainer.getInterestsAsync(new MainListCallback());
 
         View layout = inflater.inflate(R.layout.main_list_fragment, container, false);
 
@@ -43,9 +45,18 @@ public class MainListFragment extends Fragment
         mLayoutManager = new GridLayoutManager(getActivity(), NUMBER_OF_COLUMNS);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MainListAdapter(sources, getActivity());
-        mRecyclerView.setAdapter(mAdapter);
-
         return layout;
+    }
+
+    private class MainListCallback implements InterestContainerCallback
+    {
+        @Override
+        public void onDownloadComplete(Interest[] result)
+        {
+            dataSource = result;
+
+            mAdapter = new MainListAdapter(dataSource, getActivity());
+            mRecyclerView.setAdapter(mAdapter);
+        }
     }
 }

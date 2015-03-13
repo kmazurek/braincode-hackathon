@@ -10,10 +10,11 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.zakaprov.braincodemobihackathon.R;
+import com.zakaprov.braincodemobihackathon.model.Interest;
 
 public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHolder>
 {
-    private String[] mDataset;
+    private Interest[] mDataset;
     private Context mContext;
 
     // Provide a reference to the views for each data item
@@ -32,7 +33,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MainListAdapter(String[] myDataset, Context context) {
+    public MainListAdapter(Interest[] myDataset, Context context) {
         mDataset = myDataset;
         mContext = context;
     }
@@ -55,9 +56,10 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset[position]);
+        Interest currentInterest = mDataset[position];
 
-        Picasso.with(mContext).load(mDataset[position]).centerCrop().fit().into(holder.mImageView);
+        holder.mTextView.setText(currentInterest.getFancyText() + " " + currentInterest.getName());
+        Picasso.with(mContext).load(currentInterest.getImageUrl()).centerCrop().fit().into(holder.mImageView);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
