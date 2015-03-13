@@ -14,7 +14,7 @@ private static String[] fancyStrings = {"Blablabla fancy", "Get tickets", "So on
         this.setName(bandTitle);
         String randomFancyText = fancyStrings[new Random().nextInt(fancyStrings.length)];
         this.setFancyText(randomFancyText);
-        this.setImageUrl(bandTitle + ".jpg");
+        this.setImageUrl(title.replace(' ', '_') + ".jpg");
 
     }
 
