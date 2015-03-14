@@ -16,4 +16,5 @@ public interface ISteamApiMethods
     // GET
     @GET("IPlayerService/GetOwnedGames/v0001/?format=json&include_appinfo=1&include_played_free_games=1")
     SteamOwnedGames getOwnedGames(@Query("steamid") String steam, @Query("key") String apiKey);
+
 }

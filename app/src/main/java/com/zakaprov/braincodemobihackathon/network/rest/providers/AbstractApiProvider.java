@@ -1,4 +1,4 @@
-package com.zakaprov.braincodemobihackathon.network.rest;
+package com.zakaprov.braincodemobihackathon.network.rest.providers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,6 +17,8 @@ public abstract class AbstractApiProvider<ApiType>
 
     protected abstract RequestInterceptor getRequestInterceptor();
     protected abstract String getEndPoint();
+
+
 
     public ApiType getRestClient(Class<ApiType> apiType)
     {
