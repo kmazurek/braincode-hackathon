@@ -26,6 +26,7 @@ public class AuctionDeserializer implements JsonDeserializer<Auction> {
         auction.setAuctionUrl(jsonObject.get("source").getAsJsonObject().get("url").getAsString());
         auction.setImageUrl(jsonObject.get("mainImage").getAsJsonObject().get("large").getAsString());
         auction.setTitle(jsonObject.get("name").getAsString());
+        auction.setAuctionId(jsonObject.get("id").getAsLong());
         if (jsonObject.get("buyNow").getAsBoolean() == true) {
             auction.setPrice(jsonObject.get("prices").getAsJsonObject().get("buyNow").getAsString());
         }

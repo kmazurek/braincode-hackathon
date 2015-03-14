@@ -9,6 +9,13 @@ import com.zakaprov.braincodemobihackathon.network.rest.methods.IAllegroApiMetho
 import com.zakaprov.braincodemobihackathon.network.rest.utils.AllegroQuerySerializer;
 import com.zakaprov.braincodemobihackathon.network.rest.utils.AuctionDeserializer;
 import com.zakaprov.braincodemobihackathon.network.rest.utils.AuctionsDeserializer;
+import com.zakaprov.braincodemobihackathon.model.Auction;
+import com.zakaprov.braincodemobihackathon.model.Auctions;
+import com.zakaprov.braincodemobihackathon.model.Offer;
+import com.zakaprov.braincodemobihackathon.network.rest.methods.IAllegroApiMethods;
+import com.zakaprov.braincodemobihackathon.network.rest.utils.AuctionDeserializer;
+import com.zakaprov.braincodemobihackathon.network.rest.utils.AuctionsDeserializer;
+import com.zakaprov.braincodemobihackathon.network.rest.utils.OfferDeserializer;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
@@ -45,6 +52,7 @@ public class AllegroApiProvider extends AbstractApiProvider<IAllegroApiMethods>
         gsonBuilder.registerTypeAdapter(Auction.class, new AuctionDeserializer());
         gsonBuilder.registerTypeAdapter(Auctions.class, new AuctionsDeserializer());
         gsonBuilder.registerTypeAdapter(AllegroQuery.class, new AllegroQuerySerializer());
+        gsonBuilder.registerTypeAdapter(Offer.class, new OfferDeserializer());
         final Gson gson = gsonBuilder.create();
         this.restAdapter = new RestAdapter.Builder()
                 .setEndpoint(this.getEndPoint())
