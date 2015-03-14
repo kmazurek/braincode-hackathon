@@ -16,4 +16,6 @@ public interface ISteamApiMethods
     // GET
     @GET("IPlayerService/GetOwnedGames/v0001/?format=json")
     void getOwnedGames(@Query("steamid") String steam, @Query("key") String apiKey, Callback<SteamOwnedGames> callback);
+
+
 }
