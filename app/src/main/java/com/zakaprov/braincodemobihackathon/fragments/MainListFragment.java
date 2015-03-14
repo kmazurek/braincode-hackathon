@@ -8,11 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zakaprov.braincodemobihackathon.MainActivity;
 import com.zakaprov.braincodemobihackathon.R;
 import com.zakaprov.braincodemobihackathon.adapters.MainListAdapter;
+import com.zakaprov.braincodemobihackathon.callbacks.InterestContainerCallback;
 import com.zakaprov.braincodemobihackathon.model.Interest;
 import com.zakaprov.braincodemobihackathon.model.InterestContainer;
-import com.zakaprov.braincodemobihackathon.callbacks.InterestContainerCallback;
 
 public class MainListFragment extends Fragment
 {
@@ -52,7 +53,7 @@ public class MainListFragment extends Fragment
         {
             dataSource = result;
 
-            mAdapter = new MainListAdapter(dataSource, getActivity());
+            mAdapter = new MainListAdapter(dataSource, (MainActivity)getActivity());
             mRecyclerView.setAdapter(mAdapter);
         }
     }

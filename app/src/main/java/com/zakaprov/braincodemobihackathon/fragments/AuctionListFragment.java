@@ -22,6 +22,7 @@ public class AuctionListFragment extends Fragment
     private RecyclerView.LayoutManager mLayoutManager;
 
     private Auction[] dataSource;
+    private Interest chosenInterest;
 
     private static final int NUMBER_OF_COLUMNS = 2;
 
@@ -47,6 +48,11 @@ public class AuctionListFragment extends Fragment
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         return layout;
+    }
+
+    public void setChosenInterest(Interest interest)
+    {
+        chosenInterest = interest;
     }
 
     private class AuctionListCallback implements InterestAuctionsCallback

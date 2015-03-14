@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.zakaprov.braincodemobihackathon.fragments.AuctionListFragment;
 import com.zakaprov.braincodemobihackathon.fragments.MainListFragment;
 import com.zakaprov.braincodemobihackathon.model.Interest;
 
@@ -56,14 +57,27 @@ public class MainActivity extends ActionBarActivity
                     case 4:
                 }
 
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, chosenFragment)
-                    .commit();
+            changeFragment(chosenFragment);
 
             mDrawerList.setItemChecked(position, true);
             mDrawerLayout.closeDrawer(mDrawerList);
         }
+    }
+
+    public void onChooseInterest(Interest interest)
+    {
+        chosenInterest = interest;
+        AuctionListFragment newFragment = new AuctionListFragment();
+        newFragment.setChosenInterest(interest);
+        changeFragment(newFragment);
+    }
+
+    private void changeFragment(Fragment fragment)
+    {
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
     }
 
     public Interest getChosenInterest()

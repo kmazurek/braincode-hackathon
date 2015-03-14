@@ -1,6 +1,5 @@
 package com.zakaprov.braincodemobihackathon.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,31 +8,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.zakaprov.braincodemobihackathon.MainActivity;
 import com.zakaprov.braincodemobihackathon.R;
 import com.zakaprov.braincodemobihackathon.model.Interest;
 
 public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHolder>
 {
     private Interest[] mDataset;
-    private Context mContext;
+    private MainActivity mMainActivity;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView mTextViewTitle;
         public TextView mTextViewFancy;
         public ImageView mImageView;
+
+        public Interest interest;
 
         public ViewHolder(View card) {
             super(card);
             mTextViewTitle = (TextView) card.findViewById(R.id.txtTitle);
             mTextViewFancy = (TextView) card.findViewById(R.id.txtFancy);
             mImageView = (ImageView) card.findViewById(R.id.imgCard);
+
+            card.setOnClickListener(this);
         }
+
+        public void onClick(View v) {
+            MainListAdapter.this.mMainActivity.onChooseInterest(this.interest);
+        }
+
     }
 
-    public MainListAdapter(Interest[] myDataset, Context context) {
+    public MainListAdapter(Interest[] myDataset, MainActivity context) {
         mDataset = myDataset;
-        mContext = context;
+        mMainActivity = context;
     }
 
     @Override
@@ -49,10 +58,11 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Interest currentInterest = mDataset[position];
+        holder.interest = currentInterest;
 
         holder.mTextViewTitle.setText(currentInterest.getTitle());
         holder.mTextViewFancy.setText(currentInterest.getFancyText());
-        Picasso.with(mContext).load(getImageUrl(currentInterest.getTitle())).centerCrop().fit().into(holder.mImageView);
+        Picasso.with(mMainActivity).load(getImageUrl(currentInterest.getTitle())).centerCrop().fit().into(holder.mImageView);
     }
 
     private int getImageUrl(String title)
