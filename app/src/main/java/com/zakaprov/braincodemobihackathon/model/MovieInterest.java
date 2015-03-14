@@ -17,6 +17,11 @@ public class MovieInterest extends Interest {
         categories.put("100133", "Pudełka, okładki, case’y");
         categories.put("100134", "Regały, półki, stojaki");
         categories.put("100136", "Pozostałe");
+
+        fancyStrings = new String[] {"See what you can get for", "Check what Allegro has in store for", "Check out the fan gadgets from"};
+
+        generateFancyText();
+
     }
 
 }

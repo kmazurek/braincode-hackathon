@@ -1,9 +1,5 @@
 package com.zakaprov.braincodemobihackathon.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Created by kacper on 13.03.15.
  */
@@ -24,6 +20,11 @@ public class BandInterest extends Interest
         categories.put("20766", "T-shirty, bluzy, czapki");
         categories.put("98698", "Zegary i zegarki");
         categories.put("20767", "Pozostałe");
+
+        fancyStrings = new String[] {"Buy yourself a t-shirt of", "Get gadgets of your favourite", "See the cool t-shirts of",
+                "Get some fan merch of"};
+
+        generateFancyText();
     }
 
 }
