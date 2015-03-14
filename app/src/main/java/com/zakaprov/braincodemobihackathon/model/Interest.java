@@ -10,6 +10,7 @@ public abstract class Interest
     protected String title;
     private String imageUrl;
     private String fancyText;
+    protected String[] categories;
 
     private static String[] fancyStrings = {"Look for characters from", "Don't you have enough",
                                             "Get some gadgets from", "Check what's available for"};
