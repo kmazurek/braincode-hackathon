@@ -76,7 +76,7 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
 
         public ViewHolder(View card) {
             super(card);
-            mTextView = (TextView) card.findViewById(R.id.txtFancy);
+            mTextView = (TextView) card.findViewById(R.id.txtPrice);
             mImageView = (ImageView) card.findViewById(R.id.imgCard);
 
             card.setOnClickListener(this);
@@ -98,7 +98,7 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
                                                          int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_row, parent, false);
+                .inflate(R.layout.layout_auction_item, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -110,7 +110,7 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
 
         holder.auction = currentAuction;
 
-        holder.mTextView.setText(currentAuction.getTitle());
+        holder.mTextView.setText(currentAuction.getPrice() + " PLN");
         Picasso.with(mMainActivity).load(currentAuction.getImageUrl()).centerCrop().fit().into(holder.mImageView);
     }
 

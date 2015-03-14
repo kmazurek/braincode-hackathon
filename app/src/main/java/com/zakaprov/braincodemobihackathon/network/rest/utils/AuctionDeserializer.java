@@ -5,9 +5,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.zakaprov.braincodemobihackathon.model.Artist;
 import com.zakaprov.braincodemobihackathon.model.Auction;
-import com.zakaprov.braincodemobihackathon.model.TopArtists;
 
 import java.lang.reflect.Type;
 
