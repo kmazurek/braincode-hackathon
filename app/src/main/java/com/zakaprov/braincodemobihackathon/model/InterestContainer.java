@@ -17,6 +17,7 @@ import com.zakaprov.braincodemobihackathon.network.rest.utils.ApiUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit.Callback;
@@ -55,15 +56,20 @@ public class InterestContainer
             this.callback = callback;
         }
         private InterestContainerCallback callback;
-        private Collection<Interest> interestCollection = new ArrayList<>();
+        private ArrayList<ArrayList<Interest>> interestCollections = new ArrayList<>();
         @Override
         protected Void doInBackground(Void... params) {
             LastfmApiMethods lastfmApiMethods = new LastfmApiProvider(LastfmApiMethods.class).getApiClient();
             TopArtists topArtists= lastfmApiMethods.getTopArtists(ApiUtils.LASTFM_API_USER, ApiUtils.LASTFM_API_KEY);
+
+
+            ArrayList<Interest> lastFmInterests = new ArrayList<>();
+            interestCollections.add(lastFmInterests);
+
             for (Artist artist: topArtists.getArtists()) {
                 BandInterest bandInterest = new BandInterest(artist.getArtistName());
                 bandInterest.setImageUrl(artist.getImageUrl());
-                interestCollection.add(bandInterest);
+                lastFmInterests.add(bandInterest);
             }
 //            MovieApiMethods movieApiMethods = new MovieApiProvider(MovieApiMethods.class).getApiClient();
 //            TopMovies topMovies= movieApiMethods.getTopMovies("1", ApiUtils.MOVIES_API_KEY);
@@ -75,17 +81,33 @@ public class InterestContainer
             ISteamApiMethods steamAPI = new SteamProvider(ISteamApiMethods.class).getApiClient();
             steamOwnedGames = steamAPI.getOwnedGames("76561198047588728", "24BBC0195657976DCC68A69122D23C23");
             List<SteamGame> steamGameList = steamOwnedGames.getResponse().getGames();
+            ArrayList<Interest> steamGameInterest = new ArrayList<>();
+            interestCollections.add(steamGameInterest);
             for (SteamGame sg : steamGameList) {
                 GameInterest gi = new GameInterest(sg.getName());
                 gi.setImageUrl(sg.getImageUrl());
-                interestCollection.add(gi);
+                steamGameInterest.add(gi);
             }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            callback.onDownloadComplete(interestCollection.toArray(new Interest[0]));
+            Collection<Interest> interests = new ArrayList<>();
+            boolean isAny = true;
+            while(isAny) {
+                isAny = false;
+                for (int i = 0; i < interestCollections.size(); i++) {
+                    ArrayList<Interest> current = interestCollections.get(i);
+                    if(!current.isEmpty()) {
+                        isAny = true;
+                        interests.add(current.get(0));
+                        current.remove(0);
+                    }
+                }
+            }
+
+            callback.onDownloadComplete(interests.toArray(new Interest[0]));
         }
     }
 
