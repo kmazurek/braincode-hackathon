@@ -23,7 +23,7 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
 
         public ViewHolder(View card) {
             super(card);
-            mTextView = (TextView) card.findViewById(R.id.txtTitle);
+            mTextView = (TextView) card.findViewById(R.id.txtFancy);
             mImageView = (ImageView) card.findViewById(R.id.imgCard);
         }
     }

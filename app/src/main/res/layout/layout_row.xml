@@ -10,14 +10,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/txtTitle"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/imgCard"
-        android:background="#3333"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        android:layout_height="200dp"
+        android:background="#7777"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/txtFancy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_above="@+id/txtTitle"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -19,12 +19,14 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTextView;
+        public TextView mTextViewTitle;
+        public TextView mTextViewFancy;
         public ImageView mImageView;
 
         public ViewHolder(View card) {
             super(card);
-            mTextView = (TextView) card.findViewById(R.id.txtTitle);
+            mTextViewTitle = (TextView) card.findViewById(R.id.txtTitle);
+            mTextViewFancy = (TextView) card.findViewById(R.id.txtFancy);
             mImageView = (ImageView) card.findViewById(R.id.imgCard);
         }
     }
@@ -48,7 +50,8 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Interest currentInterest = mDataset[position];
 
-        holder.mTextView.setText(currentInterest.getFancyText() + " " + currentInterest.getTitle());
+        holder.mTextViewTitle.setText(currentInterest.getTitle());
+        holder.mTextViewFancy.setText(currentInterest.getFancyText());
         Picasso.with(mContext).load(getImageUrl(currentInterest.getTitle())).centerCrop().fit().into(holder.mImageView);
     }
 
@@ -73,7 +76,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
             case "Lord of The Rings":
                 return R.drawable.lord_of_the_rings;
             default:
-                return R.drawable.interstellar;
+                return R.drawable.half_life_3;
         }
     }
 
