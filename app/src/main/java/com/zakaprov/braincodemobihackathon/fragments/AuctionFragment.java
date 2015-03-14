@@ -1,13 +1,9 @@
 package com.zakaprov.braincodemobihackathon.fragments;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,34 +15,11 @@ import com.melnykov.fab.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 import com.zakaprov.braincodemobihackathon.MainActivity;
 import com.zakaprov.braincodemobihackathon.R;
-import com.zakaprov.braincodemobihackathon.adapters.AuctionListAdapter;
-import com.zakaprov.braincodemobihackathon.callbacks.InterestAuctionsCallback;
-import com.zakaprov.braincodemobihackathon.callbacks.InterestContainerCallback;
 import com.zakaprov.braincodemobihackathon.callbacks.OfferCallback;
-import com.zakaprov.braincodemobihackathon.model.Artist;
 import com.zakaprov.braincodemobihackathon.model.Auction;
-import com.zakaprov.braincodemobihackathon.model.BandInterest;
-import com.zakaprov.braincodemobihackathon.model.GameInterest;
-import com.zakaprov.braincodemobihackathon.model.Interest;
-import com.zakaprov.braincodemobihackathon.model.Movie;
-import com.zakaprov.braincodemobihackathon.model.MovieInterest;
 import com.zakaprov.braincodemobihackathon.model.Offer;
-import com.zakaprov.braincodemobihackathon.model.TopArtists;
-import com.zakaprov.braincodemobihackathon.model.TopMovies;
-import com.zakaprov.braincodemobihackathon.model.steam.SteamGame;
 import com.zakaprov.braincodemobihackathon.network.rest.methods.IAllegroApiMethods;
-import com.zakaprov.braincodemobihackathon.network.rest.methods.ISteamApiMethods;
-import com.zakaprov.braincodemobihackathon.network.rest.methods.LastfmApiMethods;
-import com.zakaprov.braincodemobihackathon.network.rest.methods.MovieApiMethods;
 import com.zakaprov.braincodemobihackathon.network.rest.providers.AllegroApiProvider;
-import com.zakaprov.braincodemobihackathon.network.rest.providers.LastfmApiProvider;
-import com.zakaprov.braincodemobihackathon.network.rest.providers.MovieApiProvider;
-import com.zakaprov.braincodemobihackathon.network.rest.providers.SteamProvider;
-import com.zakaprov.braincodemobihackathon.network.rest.utils.ApiUtils;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class AuctionFragment extends AbstractFragment implements View.OnClickListener
 {
@@ -71,8 +44,11 @@ public class AuctionFragment extends AbstractFragment implements View.OnClickLis
         final TextView ourTextView = (TextView) layout.findViewById(R.id.auctionText);
         imageView = (ImageView) layout.findViewById(R.id.headerImg);
         headerTextView = (TextView) layout.findViewById(R.id.headerTextView);
-
+        TextView priceText = (TextView) layout.findViewById(R.id.price);
+        TextView sellerText = (TextView) layout.findViewById(R.id.shop);
+        priceText.setText(auction.getPrice());
         headerTextView.setText(auction.getTitle());
+        sellerText.setText(auction.getSeller());
 
         FloatingActionButton fab = (FloatingActionButton)layout.findViewById(R.id.fab);
         fab.show();
@@ -107,7 +83,7 @@ public class AuctionFragment extends AbstractFragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        String url = "http://allegro.pl/red-hot-chilli-peppers-naszywka-wyszywana-i5104119855.html";
+        String url = auction.getAuctionUrl();
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
