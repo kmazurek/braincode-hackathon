@@ -15,8 +15,20 @@ public abstract class Interest
     private String fancyText;
     protected Map<String, String> categories;   // catID : readable
 
-    private static String[] fancyStrings = {"Look for characters from", "Don't you have enough",
+    protected static String[] fancyStrings = {"Look for characters from", "Don't you have enough",
                                             "Get some gadgets from", "Check what's available for"};
+
+    public static String[] getFancyStrings()
+    {
+
+        return fancyStrings;
+    }
+
+    public static void setFancyStrings(String[] fancyStrings)
+    {
+
+        Interest.fancyStrings = fancyStrings;
+    }
 
     public Interest()
     {
@@ -26,6 +38,10 @@ public abstract class Interest
     public Interest(String title) {
         this();
         this.title = title;
+    }
+
+    protected void generateFancyText()
+    {
         int idx = new Random().nextInt(fancyStrings.length);
         String random = (fancyStrings[idx]);
         this.setFancyText(random);

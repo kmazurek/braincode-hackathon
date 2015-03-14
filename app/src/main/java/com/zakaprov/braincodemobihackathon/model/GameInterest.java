@@ -13,6 +13,11 @@ public class GameInterest extends Interest
         categories.put("147902", "Kubki");
         categories.put("147903", "Plakaty");
         categories.put("53453", "Pozostałe");
+
+        fancyStrings = new String[] {"Get some gadgets from", "See what's available for", "Check out some merchandise for",
+                        "Order great gadgets from"};
+
+        generateFancyText();
     }
 
 }
