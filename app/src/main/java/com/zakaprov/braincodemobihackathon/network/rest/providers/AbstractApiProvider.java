@@ -40,7 +40,8 @@ public abstract class AbstractApiProvider<ApiType>
                 .setEndpoint(getEndPoint())
                 .setConverter(createGSONConverter())
                 .setClient(new OkClient())
-                .setRequestInterceptor(getRequestInterceptor()).build();
+//                .setRequestInterceptor(getRequestInterceptor())
+                .build();
 
     }
 

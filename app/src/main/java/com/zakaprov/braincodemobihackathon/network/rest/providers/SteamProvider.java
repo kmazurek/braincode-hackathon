@@ -9,17 +9,22 @@ import retrofit.RequestInterceptor;
  */
 public class SteamProvider extends  AbstractApiProvider<ISteamApiMethods> {
 
-    protected SteamProvider(Class<ISteamApiMethods> apiType) {
+    public SteamProvider(Class<ISteamApiMethods> apiType) {
         super(apiType);
     }
 
     @Override
-    protected RequestInterceptor getRequestInterceptor() {
-        return null;
+    public RequestInterceptor getRequestInterceptor() {
+        return new RequestInterceptor() {
+            @Override
+            public void intercept(RequestFacade request) {
+                return;
+            }
+        };
     }
 
     @Override
-    protected String getEndPoint() {
+    public String getEndPoint() {
         return "http://api.steampowered.com";
     }
 }
