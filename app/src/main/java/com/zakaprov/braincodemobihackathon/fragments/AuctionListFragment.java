@@ -62,7 +62,7 @@ public class AuctionListFragment extends Fragment
         {
             dataSource = result;
 
-            mAdapter = new AuctionListAdapter(dataSource, getActivity());
+            mAdapter = new AuctionListAdapter(dataSource, (MainActivity)getActivity());
             mRecyclerView.setAdapter(mAdapter);
         }
     }

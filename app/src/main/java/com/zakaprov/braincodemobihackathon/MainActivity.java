@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.zakaprov.braincodemobihackathon.fragments.AuctionListFragment;
 import com.zakaprov.braincodemobihackathon.fragments.MainListFragment;
+import com.zakaprov.braincodemobihackathon.model.Auction;
 import com.zakaprov.braincodemobihackathon.model.Interest;
 
 
@@ -70,6 +71,11 @@ public class MainActivity extends ActionBarActivity
         AuctionListFragment newFragment = new AuctionListFragment();
         newFragment.setChosenInterest(interest);
         changeFragment(newFragment);
+    }
+
+    public void onChooseAuction(Auction auction)
+    {
+        // TODO go to auction details fragment
     }
 
     private void changeFragment(Fragment fragment)
