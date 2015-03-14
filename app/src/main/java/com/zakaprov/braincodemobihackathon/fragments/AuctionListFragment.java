@@ -15,7 +15,7 @@ import com.zakaprov.braincodemobihackathon.callbacks.InterestAuctionsCallback;
 import com.zakaprov.braincodemobihackathon.model.Auction;
 import com.zakaprov.braincodemobihackathon.model.Interest;
 
-public class AuctionListFragment extends Fragment
+public class AuctionListFragment extends AbstractFragment
 {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;

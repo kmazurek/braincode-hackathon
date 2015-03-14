@@ -15,7 +15,7 @@ import com.zakaprov.braincodemobihackathon.callbacks.InterestContainerCallback;
 import com.zakaprov.braincodemobihackathon.model.Interest;
 import com.zakaprov.braincodemobihackathon.model.InterestContainer;
 
-public class MainListFragment extends Fragment
+public class MainListFragment extends AbstractFragment
 {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -55,6 +55,7 @@ public class MainListFragment extends Fragment
 
             mAdapter = new MainListAdapter(dataSource, (MainActivity)getActivity());
             mRecyclerView.setAdapter(mAdapter);
+
         }
     }
 }
