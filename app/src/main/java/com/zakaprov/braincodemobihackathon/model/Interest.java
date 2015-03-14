@@ -3,6 +3,9 @@ package com.zakaprov.braincodemobihackathon.model;
 import com.zakaprov.braincodemobihackathon.callbacks.InterestAuctionsCallback;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public abstract class Interest
@@ -10,17 +13,18 @@ public abstract class Interest
     protected String title;
     private String imageUrl;
     private String fancyText;
-    protected String[] categories;
+    protected Map<String, String> categories;   // catID : readable
 
     private static String[] fancyStrings = {"Look for characters from", "Don't you have enough",
                                             "Get some gadgets from", "Check what's available for"};
 
     public Interest()
     {
-
+        categories = new HashMap<>();
     }
 
     public Interest(String title) {
+        this();
         this.title = title;
         int idx = new Random().nextInt(fancyStrings.length);
         String random = (fancyStrings[idx]);
@@ -29,7 +33,13 @@ public abstract class Interest
 
     private ArrayList<Auction> auctionArrayList = new ArrayList<Auction>();
 
-    protected abstract AllegroQuery[] getQueries();
+    protected AllegroQuery[] getQueries() {
+        List<AllegroQuery> tab = new ArrayList<>();
+        for (Map.Entry<String, String> e : categories.entrySet()) {
+            tab.add(new AllegroQuery(title, e.getKey(), e.getValue()));
+        }
+        return tab.toArray(new AllegroQuery[0]);
+    }
 
     public void getAuctionsAsync(InterestAuctionsCallback callback)
     {

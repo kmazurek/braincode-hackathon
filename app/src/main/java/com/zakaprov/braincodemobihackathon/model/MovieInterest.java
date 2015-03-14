@@ -7,16 +7,16 @@ public class MovieInterest extends Interest {
 
     public MovieInterest(String title) {
         super(title);
+        categories.put("100127", "Autografy");
+        categories.put("100130", "Figurki");
+        categories.put("100132", "Kalendarze");
+        categories.put("100129", "Kubki");
+        categories.put("100131", "Naszywki, znaczki, przypinki");
+        categories.put("100135", "Odzież");
+        categories.put("100128", "Plakaty, zdjęcia");
+        categories.put("100133", "Pudełka, okładki, case’y");
+        categories.put("100134", "Regały, półki, stojaki");
+        categories.put("100136", "Pozostałe");
     }
 
-    @Override
-    public AllegroQuery[] getQueries() {
-        AllegroQuery tab[] = new AllegroQuery[5];
-        tab[0] = new AllegroQuery(this.title + " plakat", "0", "plakaty");
-        tab[1] = new AllegroQuery(this.title + " OST", "0", "soundtracki");
-        tab[2] = new AllegroQuery(this.title + " gadżet", "0", "gadżety");
-        tab[3] = new AllegroQuery(this.title + " kubek", "0", "kubki");
-        tab[4] = new AllegroQuery(this.title + " vhs", "0", "kasety video");
-        return tab;
-    }
 }

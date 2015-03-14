@@ -8,15 +8,11 @@ public class GameInterest extends Interest
     public GameInterest(String title)
     {
         super(title);
+        categories.put("53451", "Figurki");
+        categories.put("53452", "Koszulki");
+        categories.put("147902", "Kubki");
+        categories.put("147903", "Plakaty");
+        categories.put("53453", "Pozostałe");
     }
 
-    @Override
-    public AllegroQuery[] getQueries() {
-        AllegroQuery tab[] = new AllegroQuery[4];
-        tab[0] = new AllegroQuery(this.title + " plakat", "0", "plakaty");
-        tab[1] = new AllegroQuery(this.title + " OST", "0", "soundtracki");
-        tab[2] = new AllegroQuery(this.title + " gadżet", "0", "gadżety");
-        tab[3] = new AllegroQuery(this.title + " kubek", "0", "kubki");
-        return tab;
-    }
 }
