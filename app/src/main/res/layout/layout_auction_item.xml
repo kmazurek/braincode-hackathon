@@ -22,6 +22,7 @@
             android:layout_alignParentBottom="true"
             android:background="#6333"
             android:gravity="center"
+            android:padding="16dp"
             android:textColor="@android:color/white"
             android:textSize="24sp"/>
 
