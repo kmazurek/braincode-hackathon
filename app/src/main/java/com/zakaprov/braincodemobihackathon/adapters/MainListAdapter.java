@@ -62,7 +62,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
 
         holder.mTextViewTitle.setText(currentInterest.getTitle());
         holder.mTextViewFancy.setText(currentInterest.getFancyText());
-        Picasso.with(mMainActivity).load(getImageUrl(currentInterest.getTitle())).centerCrop().fit().into(holder.mImageView);
+        Picasso.with(mMainActivity).load(currentInterest.getImageUrl()).centerCrop().fit().into(holder.mImageView);
     }
 
     private int getImageUrl(String title)

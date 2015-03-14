@@ -21,7 +21,7 @@
                 android:layout_height="200dp"
                 android:src="@drawable/rhcp_patch"
 
-                android:id="@+id/imageView"
+                android:id="@+id/headerImg"
                 android:cropToPadding="false"
                 android:scaleType="centerCrop" />
 
