@@ -2,6 +2,7 @@ package com.zakaprov.braincodemobihackathon.network.rest.methods;
 
 import com.zakaprov.braincodemobihackathon.model.TopArtists;
 
+import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Query;
 
@@ -11,6 +12,6 @@ import retrofit.http.Query;
 public interface LastfmApiMethods {
 
 
-    @GET("2.0/?method=user.gettopartists&user=rj&api_key=416a255d48a1fa9d747490a6c8fad10a&format=json")
+    @GET("/2.0/?method=user.gettopartists&format=json")
     TopArtists getTopArtists(@Query("user") String userName, @Query("api_key") String apiKey);
 }

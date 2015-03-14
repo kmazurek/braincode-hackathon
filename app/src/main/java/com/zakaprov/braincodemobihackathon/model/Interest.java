@@ -8,7 +8,7 @@ import java.util.Random;
 public abstract class Interest
 {
     protected String title;
-    private int imageUrl;
+    private String imageUrl;
     private String fancyText;
 
     private static String[] fancyStrings = {"Look for characters from", "Don't you have enough",
@@ -54,7 +54,7 @@ public abstract class Interest
         this.title = name;
     }
 
-    public void setImageUrl(int imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
@@ -62,7 +62,7 @@ public abstract class Interest
         this.fancyText = fancyText;
     }
 
-    public int getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 

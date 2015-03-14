@@ -21,8 +21,16 @@ import com.zakaprov.braincodemobihackathon.fragments.AuctionListFragment;
 
 import com.zakaprov.braincodemobihackathon.fragments.MainListFragment;
 import com.zakaprov.braincodemobihackathon.model.Auction;
+import com.zakaprov.braincodemobihackathon.model.Artist;
 import com.zakaprov.braincodemobihackathon.model.Interest;
+import com.zakaprov.braincodemobihackathon.model.TopArtists;
+import com.zakaprov.braincodemobihackathon.network.rest.methods.LastfmApiMethods;
+import com.zakaprov.braincodemobihackathon.network.rest.providers.LastfmApiProvider;
+import com.zakaprov.braincodemobihackathon.network.rest.utils.ApiUtils;
 
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class MainActivity extends ActionBarActivity
