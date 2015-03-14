@@ -5,7 +5,6 @@ package com.zakaprov.braincodemobihackathon.model;
  */
 public class Movie {
     String title;
-    double voteAverage;
     String imageUrl;
 
     public String getTitle() {
@@ -16,13 +15,6 @@ public class Movie {
         this.title = title;
     }
 
-    public double getVoteAverage() {
-        return voteAverage;
-    }
-
-    public void setVoteAverage(double voteAverage) {
-        this.voteAverage = voteAverage;
-    }
 
     public String getImageUrl() {
         return imageUrl;

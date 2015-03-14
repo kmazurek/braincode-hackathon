@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.zakaprov.braincodemobihackathon.model.Movie;
 import com.zakaprov.braincodemobihackathon.model.TopMovies;
 import com.zakaprov.braincodemobihackathon.network.rest.methods.MovieApiMethods;
+import com.zakaprov.braincodemobihackathon.network.rest.utils.MovieDeserializer;
+import com.zakaprov.braincodemobihackathon.network.rest.utils.TopMoviesDeserializer;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
@@ -35,8 +37,8 @@ public class MovieApiProvider extends AbstractApiProvider<MovieApiMethods> {
     @Override
     protected void initRestAdapter() {
         final GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(Movie.class, new Movie());
-        gsonBuilder.registerTypeAdapter(TopMovies.class, new TopMovies());
+        gsonBuilder.registerTypeAdapter(Movie.class, new MovieDeserializer());
+        gsonBuilder.registerTypeAdapter(TopMovies.class, new TopMoviesDeserializer());
         final Gson gson = gsonBuilder.create();
         this.restAdapter = new RestAdapter.Builder()
                 .setEndpoint(this.getEndPoint())

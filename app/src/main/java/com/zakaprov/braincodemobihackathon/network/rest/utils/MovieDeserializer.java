@@ -1,5 +1,7 @@
 package com.zakaprov.braincodemobihackathon.network.rest.utils;
 
+import android.util.Log;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -21,9 +23,9 @@ public class MovieDeserializer implements JsonDeserializer<Movie> {
         final JsonObject jsonObject = json.getAsJsonObject();
         final Movie movie = new Movie();
         movie.setTitle(jsonObject.get("title").getAsString());
-        movie.setVoteAverage(jsonObject.get("vote_average").getAsDouble());
         String imageUrl = "http://image.tmdb.org/t/p/w500/";
         imageUrl += jsonObject.get("poster_path").getAsString();
+        Log.d("Movie deserializer", imageUrl);
         movie.setImageUrl(imageUrl);
         return movie;
     }
