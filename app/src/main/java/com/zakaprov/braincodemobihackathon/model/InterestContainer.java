@@ -71,12 +71,15 @@ public class InterestContainer
                 bandInterest.setImageUrl(artist.getImageUrl());
                 lastFmInterests.add(bandInterest);
             }
+
+            ArrayList<Interest> movieInterests = new ArrayList<>();
+            interestCollections.add(movieInterests);
             MovieApiMethods movieApiMethods = new MovieApiProvider(MovieApiMethods.class).getApiClient();
             TopMovies topMovies= movieApiMethods.getTopMovies("1", ApiUtils.MOVIES_API_KEY);
             for (Movie movie: topMovies.getMovies()) {
                 MovieInterest movieInterest = new MovieInterest(movie.getTitle());
                 movieInterest.setImageUrl(movie.getImageUrl());
-                interestCollection.add(movieInterest);
+                movieInterests.add(movieInterest);
             }
             ISteamApiMethods steamAPI = new SteamProvider(ISteamApiMethods.class).getApiClient();
             steamOwnedGames = steamAPI.getOwnedGames("76561198047588728", "24BBC0195657976DCC68A69122D23C23");
