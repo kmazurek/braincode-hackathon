@@ -2,9 +2,12 @@ package com.zakaprov.braincodemobihackathon;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.zakaprov.braincodemobihackathon.fragments.AuctionFragment;
 import com.zakaprov.braincodemobihackathon.fragments.AuctionListFragment;
 import com.zakaprov.braincodemobihackathon.fragments.MainListFragment;
 import com.zakaprov.braincodemobihackathon.model.Auction;
@@ -23,8 +27,10 @@ public class MainActivity extends ActionBarActivity
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private String[] mNavigationItems;
+    private Fragment mOldFragment;
 
     private Interest chosenInterest;
+    private Auction chosenAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,9 @@ public class MainActivity extends ActionBarActivity
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, mNavigationItems));
         mDrawerList.setOnItemClickListener(new NavigationDrawerListener());
+        FragmentManager fm = getFragmentManager();
+        mOldFragment = new MainListFragment();
+        fm.beginTransaction().add(R.id.fragmentContainer, mOldFragment).commit();
     }
 
     private class NavigationDrawerListener implements AdapterView.OnItemClickListener
@@ -75,15 +84,27 @@ public class MainActivity extends ActionBarActivity
 
     public void onChooseAuction(Auction auction)
     {
-        // TODO go to auction details fragment
+        chosenAction = auction;
+        AuctionFragment newFragment = new AuctionFragment();
+        newFragment.setChosenAuction(auction);
     }
 
     private void changeFragment(Fragment fragment)
     {
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, fragment)
+        FragmentTransaction tr = fragmentManager.beginTransaction();
+
+
+        tr.setCustomAnimations(R.animator.slide_in, R.animator.scale_out);
+
+        if(mOldFragment != null) {
+            tr.hide(mOldFragment);
+        }
+
+        tr.add(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
                 .commit();
+        mOldFragment = fragment;
     }
 
     public Interest getChosenInterest()
