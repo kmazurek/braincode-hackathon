@@ -1,6 +1,8 @@
 package com.zakaprov.braincodemobihackathon.fragments;
 
+import android.app.ActionBar;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.squareup.picasso.Picasso;
+import com.zakaprov.braincodemobihackathon.CustomRecyclerView;
 import com.zakaprov.braincodemobihackathon.MainActivity;
 import com.zakaprov.braincodemobihackathon.R;
 import com.zakaprov.braincodemobihackathon.adapters.AuctionListAdapter;
@@ -25,13 +29,16 @@ import static android.support.v7.widget.RecyclerView.OnScrollListener;
 
 public class AuctionListFragment extends AbstractFragment
 {
-    private RecyclerView mRecyclerView;
+    private CustomRecyclerView mRecyclerView;
     private Adapter mAdapter;
     private LayoutManager mLayoutManager;
     private FrameLayout mHeader;
+    private FrameLayout mHeaderApla;
 
     private Auction[] dataSource;
     private Interest chosenInterest;
+    private double headerHeight;
+    private double startHeight;
 
     private static final int NUMBER_OF_COLUMNS = 2;
 
@@ -52,7 +59,7 @@ public class AuctionListFragment extends AbstractFragment
 
         View layout = inflater.inflate(R.layout.auction_list_fragment, container, false);
 
-        mRecyclerView = (RecyclerView) layout.findViewById(R.id.mainRecyclerView);
+        mRecyclerView = (CustomRecyclerView) layout.findViewById(R.id.mainRecyclerView);
         mRecyclerView.setOnScrollListener(new OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -67,6 +74,9 @@ public class AuctionListFragment extends AbstractFragment
         mAdapter = new AuctionListAdapter(dataSource, (MainActivity)getActivity());
         mRecyclerView.setAdapter(mAdapter);
         mHeader = (FrameLayout) layout.findViewById(R.id.header);
+        mHeaderApla = (FrameLayout) layout.findViewById(R.id.headerApla);
+        headerHeight = mHeader.getLayoutParams().height;
+        startHeight = headerHeight;
         ImageView iv = (ImageView)layout.findViewById(R.id.headerImg);
 
 
@@ -76,7 +86,25 @@ public class AuctionListFragment extends AbstractFragment
     }
 
     private void onScroll(int dy) {
-        Log.d("kulak", dy + "");
+        double prevHeaderHeight = headerHeight;
+        headerHeight = startHeight - 0.5*mRecyclerView.getVerticalOffset();
+
+        Log.d("kulak", mRecyclerView.getVerticalOffset() + "");
+        int minHeight = 200;
+        if(headerHeight < minHeight) {
+            headerHeight = minHeight;
+        }
+        if(headerHeight > startHeight) {
+            headerHeight = startHeight;
+        }
+
+        double opacity = (startHeight - headerHeight) / (startHeight - minHeight);
+        int opacityHex = (int)(255 * opacity);
+        //Log.d(opacity);
+
+        mHeaderApla.setBackgroundColor(Color.argb(opacityHex, 50, 50, 50));
+
+        mHeader.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int)headerHeight));
     }
 
     public void setChosenInterest(Interest interest)

@@ -9,11 +9,25 @@
         android:id="@+id/header"
         android:layout_height="200dp">
         <ImageView
+            android:id="@+id/headerImg"
+            android:scaleType="centerCrop"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/headerApla"></FrameLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Red Hot Chilli Peppers"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#FFF"
+            android:textSize="24dp"/>
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <com.zakaprov.braincodemobihackathon.CustomRecyclerView
         android:id="@+id/mainRecyclerView"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
