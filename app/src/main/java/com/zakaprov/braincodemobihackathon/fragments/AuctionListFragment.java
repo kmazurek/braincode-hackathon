@@ -38,7 +38,8 @@ public class AuctionListFragment extends Fragment
         MainActivity activity = (MainActivity) getActivity();
         Interest chosenInterest = activity.getChosenInterest();
 
-        chosenInterest.getAuctionsAsync(new AuctionListCallback());
+        // MOCKUP
+//        chosenInterest.getAuctionsAsync(new AuctionListCallback());
 
         View layout = inflater.inflate(R.layout.auction_list_fragment, container, false);
 
@@ -46,6 +47,10 @@ public class AuctionListFragment extends Fragment
 
         mLayoutManager = new GridLayoutManager(getActivity(), NUMBER_OF_COLUMNS);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // MOCKUP
+        mAdapter = new AuctionListAdapter(dataSource, (MainActivity)getActivity());
+        mRecyclerView.setAdapter(mAdapter);
 
         return layout;
     }

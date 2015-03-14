@@ -4,6 +4,7 @@ public class Auction
 {
     private String title;
     private String imageUrl;
+    private String price;
 
     public String getTitle() {
         return title;
@@ -19,5 +20,15 @@ public class Auction
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getPrice()
+    {
+        return price;
+    }
+
+    public void setPrice(String price)
+    {
+        this.price = price;
     }
 }
