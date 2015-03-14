@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -83,10 +84,8 @@ public class AuctionListFragment extends AbstractFragment
         mHeaderApla = (FrameLayout) layout.findViewById(R.id.headerApla);
         headerHeight = mHeader.getLayoutParams().height;
         startHeight = headerHeight;
+        ((TextView)layout.findViewById(R.id.artistName)).setText(chosenInterest.getTitle());
         final ImageView iv = (ImageView)layout.findViewById(R.id.headerImg);
-
-        final PaletteTransformation paletteTransformation = PaletteTransformation.instance();
-
 
 
         Picasso.with(getActivity()).load(chosenInterest.getImageUrl()).centerCrop().fit()
@@ -95,9 +94,13 @@ public class AuctionListFragment extends AbstractFragment
             public void onSuccess() {
                 try {
                     Bitmap bm = ((BitmapDrawable) (iv.getDrawable())).getBitmap();
-                    Palette p = Palette.generate(bm);
-                    bgColor = p.getVibrantSwatch().getRgb();
-                    p = null;
+                    Palette.generateAsync(bm, new Palette.PaletteAsyncListener() {
+                        @Override
+                        public void onGenerated(Palette palette) {
+                            bgColor = palette.getLightMutedColor(Color.rgb(50, 50, 50));
+                        }
+                    });
+
                 } catch(Exception e) {
                     bgColor = Color.rgb(50, 50, 50);
                 }

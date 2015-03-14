@@ -18,6 +18,7 @@
             android:layout_height="fill_parent"
             android:id="@+id/headerApla"></FrameLayout>
         <TextView
+            android:id="@+id/artistName"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="Red Hot Chilli Peppers"
