@@ -25,29 +25,41 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
             R.drawable.rhcp_5,
             R.drawable.rhcp_6,
             R.drawable.rhcp_7,
-            R.drawable.rhcp_8
+            R.drawable.rhcp_8,
+            R.drawable.rhcp_9,
+            R.drawable.rhcp_10,
+            R.drawable.rhcp_11,
+            R.drawable.rhcp_12,
     };
 
     private static final String[] MOCKUP_TITLES = {
             "Red Hot Chilli Peppers - By The Way L BLACK",
             "Red Hot Chilli Peppers - Live At Slane Castle DVD",
-            "GUWNO",
+            "Blizna - Red Hot Chili Peppers Anthony Kiedis",
             "Red Hot Chilli Peppers - DVD OFF THE MAP Folia!",
             "RHCP T-shirt Flea M - nowa!",
             "Red Hot Chilli Peppers Koszulka Biała",
             "Red Hot Chilli Peppers Suck My Kiss Czerwona L",
-            "RHCP koszulka damska M"
+            "RHCP koszulka damska M",
+            "RED HOT CHILI PEPPERS: BY THE WAY - THE BIOGRAPHY",
+            "Red Hot Chili Peppers (live) - plakat 61x91,5 cm",
+            "Reklama Neon RED HOT CHILI PEPPERS szyld prezeter",
+            "KOLCZYKI RED HOT CHILI PEPPERS RHCP 16 WZORÓW"
     };
 
     private static final String[] MOCKUP_PRICES = {
             "75,00 PLN",
             "29,00 PLN",
-            "66,66 PLN",
+            "39,00 PLN",
             "34,50 PLN",
             "62,00 PLN",
             "59,99 PLN",
             "45,90 PLN",
-            "65,50 PLN"
+            "65,50 PLN",
+            "20,00 PLN",
+            "17,90 PLN",
+            "149,99 PLN",
+            "10,00 PLN"
     };
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
