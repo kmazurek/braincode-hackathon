@@ -97,7 +97,7 @@ public class AuctionListFragment extends AbstractFragment
                     Palette.generateAsync(bm, new Palette.PaletteAsyncListener() {
                         @Override
                         public void onGenerated(Palette palette) {
-                            bgColor = palette.getLightMutedColor(Color.rgb(50, 50, 50));
+                            bgColor = palette.getVibrantColor(Color.rgb(50, 50, 50));
                         }
                     });
 

@@ -30,6 +30,8 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
             R.drawable.rhcp_10,
             R.drawable.rhcp_11,
             R.drawable.rhcp_12,
+            R.drawable.rhcp_13,
+            R.drawable.rhcp_14
     };
 
     private static final String[] MOCKUP_TITLES = {
@@ -44,7 +46,9 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
             "RED HOT CHILI PEPPERS: BY THE WAY - THE BIOGRAPHY",
             "Red Hot Chili Peppers (live) - plakat 61x91,5 cm",
             "Reklama Neon RED HOT CHILI PEPPERS szyld prezeter",
-            "KOLCZYKI RED HOT CHILI PEPPERS RHCP 16 WZORÓW"
+            "KOLCZYKI RED HOT CHILI PEPPERS RHCP 16 WZORÓW",
+            "RED HOT CHILLI PEPPERS NASZYWKA WYSZYWANA!",
+            "SUPER T-SHIRT RED HOT CHILLI PEPPERS M UNIKAT M",
     };
 
     private static final String[] MOCKUP_PRICES = {
@@ -59,7 +63,9 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
             "20,00 PLN",
             "17,90 PLN",
             "149,99 PLN",
-            "10,00 PLN"
+            "10,00 PLN",
+            "6,00 PLN",
+            "25,00 PLN"
     };
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

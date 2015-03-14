@@ -6,9 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.melnykov.fab.FloatingActionButton;
 import com.zakaprov.braincodemobihackathon.MainActivity;
@@ -40,6 +42,18 @@ public class AuctionFragment extends AbstractFragment implements View.OnClickLis
         FloatingActionButton fab = (FloatingActionButton)layout.findViewById(R.id.fab);
         fab.show();
         fab.setOnClickListener(this);
+
+        String text = "NASZYWKA GRUBA, WYSZYWANA JAK NA ZDJĘCIU!<br/><br/>"+
+                "            Wielkość - PATRZ FOTKA<br/><br/><br/>"+
+                "<b>UWAGA! ZASTRZEGAM MOŻLIWOŚĆ CHWILOWEGO BRAKU LUB WYSYŁKI W INNYM KOLORZE!</b><br/><br/><br/>"+
+                "5 zł polecony ekonomiczny<br/>" +
+                "6 zł polecony priorytet<br/><br/>" +
+                "Płatność PayU = szybka wysyłka !<br/><br/><br/><br/><br/>" +
+                "----------<br/>" +
+                "Dodano 2014-07-23 10:42<br/>" +
+                "W PRZYPADKU NASZYWEK WYSZYWANYCH CZĘSTO ZDARZAJĄ SIĘ BRAKI, ABY UNIKNĄĆ NIEPOROZUMIEŃ PROSZĘ O KONTAKT W SPRAWIE DOSTĘPNOŚCI, PODAWANIE ALTERNATYWY LUB WYROZUMIAŁOŚĆ.";
+
+        ((TextView)layout.findViewById(R.id.auctionText)).setText(Html.fromHtml(text));
 
         return layout;
     }

@@ -66,20 +66,17 @@
             android:layout_weight="1"
             android:textAlignment="center"
             android:gravity="center"
-            android:text="MUSC_SHOP (2500)"
+            android:text="MUSIC_SHOP (2500)"
             android:layout_gravity="center_vertical"
             android:id="@+id/shop" />
         </LinearLayout>
         <TextView
+            android:id="@+id/auctionText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget hendrerit odio. Phasellus commodo faucibus imperdiet. Ut ut euismod mauris. Pellentesque ultrices vulputate elit. Nullam cursus placerat arcu sollicitudin sollicitudin. Aliquam scelerisque, nunc eget scelerisque vestibulum, augue tellus condimentum ex, at fringilla lectus libero vitae justo. Nunc nec purus vitae diam maximus sodales. Nullam maximus elementum quam ac porttitor.
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget hendrerit odio. Phasellus commodo faucibus imperdiet. Ut ut euismod mauris. Pellentesque ultrices vulputate elit. Nullam cursus placerat arcu sollicitudin sollicitudin. Aliquam scelerisque, nunc eget scelerisque vestibulum, augue tellus condimentum ex, at fringilla lectus libero vitae justo. Nunc nec purus vitae diam maximus sodales. Nullam maximus elementum quam ac porttitor.
-
-"/>
+            android:maxLines="1000"
+            android:text=""/>
         </LinearLayout>
     </ScrollView>
     <com.melnykov.fab.FloatingActionButton
