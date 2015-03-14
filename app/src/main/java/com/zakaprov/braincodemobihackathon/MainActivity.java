@@ -110,6 +110,7 @@ public class MainActivity extends ActionBarActivity
         chosenAction = auction;
         AuctionFragment newFragment = new AuctionFragment();
         newFragment.setChosenAuction(auction);
+        changeFragment(newFragment);
     }
 
     private void changeFragment(Fragment fragment)
@@ -125,7 +126,7 @@ public class MainActivity extends ActionBarActivity
         }
 
         tr.add(R.id.fragmentContainer, fragment)
-                .addToBackStack(null)
+                .addToBackStack("T")
                 .commit();
         mOldFragment = fragment;
     }

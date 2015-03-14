@@ -5,19 +5,12 @@
         android:valueFrom="1.0f"
         android:valueTo="0.8f"
         android:valueType="floatType"
-        android:duration="200"></objectAnimator>
+        android:duration="300"></objectAnimator>
     <objectAnimator
         android:propertyName="scaleY"
         android:valueFrom="1.0f"
         android:valueTo="0.8f"
         android:valueType="floatType"
-        android:duration="200"
+        android:duration="300"
         ></objectAnimator>
-    <objectAnimator
-        android:propertyName="x"
-        android:valueFrom="0"
-        android:valueTo="0"
-        android:duration="400">
-
-    </objectAnimator>
 </set>
