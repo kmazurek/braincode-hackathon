@@ -3,12 +3,9 @@ package com.zakaprov.braincodemobihackathon;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,19 +15,12 @@ import android.widget.ListView;
 
 import com.zakaprov.braincodemobihackathon.fragments.AuctionFragment;
 import com.zakaprov.braincodemobihackathon.fragments.AuctionListFragment;
-
 import com.zakaprov.braincodemobihackathon.fragments.MainListFragment;
 import com.zakaprov.braincodemobihackathon.model.Auction;
-import com.zakaprov.braincodemobihackathon.model.Artist;
 import com.zakaprov.braincodemobihackathon.model.Interest;
-import com.zakaprov.braincodemobihackathon.model.TopArtists;
-import com.zakaprov.braincodemobihackathon.network.rest.methods.LastfmApiMethods;
-import com.zakaprov.braincodemobihackathon.network.rest.providers.LastfmApiProvider;
-import com.zakaprov.braincodemobihackathon.network.rest.utils.ApiUtils;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import com.zakaprov.braincodemobihackathon.model.Token;
+import com.zakaprov.braincodemobihackathon.network.rest.methods.IAllegroApiMethods;
+import com.zakaprov.braincodemobihackathon.network.rest.providers.AllegroApiProvider;
 
 
 public class MainActivity extends ActionBarActivity
@@ -57,12 +47,26 @@ public class MainActivity extends ActionBarActivity
         FragmentManager fm = getFragmentManager();
         mOldFragment = new MainListFragment();
         fm.beginTransaction().add(R.id.fragmentContainer, mOldFragment).commit();
-
-
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
 
+        AllegroApiProvider allegroApiProvider = new AllegroApiProvider(IAllegroApiMethods.class);
 
+        new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                AllegroApiProvider allegroApiProvider = new AllegroApiProvider(IAllegroApiMethods.class);
+                Token token = allegroApiProvider.getApiClient().getAccessToken();
+                AllegroApiProvider.ALLEGRO_API_TOKEN = token.getToken();
+            }
+        }).start();
+    }
 
     private class NavigationDrawerListener implements AdapterView.OnItemClickListener
     {
