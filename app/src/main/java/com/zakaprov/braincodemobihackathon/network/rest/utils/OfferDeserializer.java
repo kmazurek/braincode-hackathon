@@ -17,7 +17,7 @@ public class OfferDeserializer implements JsonDeserializer<Offer> {
     public Offer deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject rootObject = json.getAsJsonObject();
         Offer offer = new Offer();
-        offer.setHtmlDescription(rootObject.get("description").getAsJsonObject().get("html").getAsString());
+        offer.setHtmlDescription(rootObject.get("description").getAsJsonObject().get("plainText").getAsString());
 
         return offer;
     }

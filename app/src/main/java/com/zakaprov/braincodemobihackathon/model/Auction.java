@@ -8,7 +8,7 @@ public class Auction
     private String seller;
     private int sellerRating;
     private String price;
-    private long auctionId;
+    private String auctionId;
 
     @Override
     public String toString()
@@ -16,10 +16,11 @@ public class Auction
         return title + " " + imageUrl + " " + price;
     }
 
-    public long getAuctionId() {
+    public String getAuctionId() {
         return auctionId;
     }
-    public void setAuctionId(long auctionId) {
+
+    public void setAuctionId(String auctionId) {
         this.auctionId = auctionId;
     }
 
