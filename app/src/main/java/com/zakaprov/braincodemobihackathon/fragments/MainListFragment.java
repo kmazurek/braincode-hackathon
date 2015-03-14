@@ -33,12 +33,11 @@ public class MainListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        View layout = inflater.inflate(R.layout.main_list_fragment, container, false);
+        mRecyclerView = (RecyclerView) layout.findViewById(R.id.mainRecyclerView);
+
         InterestContainer interestContainer = new InterestContainer();
         interestContainer.getInterestsAsync(new MainListCallback());
-
-        View layout = inflater.inflate(R.layout.main_list_fragment, container, false);
-
-        mRecyclerView = (RecyclerView) layout.findViewById(R.id.mainRecyclerView);
 
         mLayoutManager = new GridLayoutManager(getActivity(), NUMBER_OF_COLUMNS);
         mRecyclerView.setLayoutManager(mLayoutManager);

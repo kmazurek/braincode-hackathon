@@ -1,21 +1,13 @@
 package com.zakaprov.braincodemobihackathon.model;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 /**
  * Created by kacper on 13.03.15.
  */
-public class BandInterest extends Interest  {
-    private String title;
-private static String[] fancyStrings = {"Blablabla fancy", "Get tickets", "So on"};
-    public BandInterest(String bandTitle) {
-        title = bandTitle;
-        this.setName(bandTitle);
-        String randomFancyText = fancyStrings[new Random().nextInt(fancyStrings.length)];
-        this.setFancyText(randomFancyText);
-        this.setImageUrl(title.toLowerCase().replace(' ', '_') + ".jpg");
-
+public class BandInterest extends Interest
+{
+    public BandInterest(String title)
+    {
+        super(title);
     }
 
     @Override

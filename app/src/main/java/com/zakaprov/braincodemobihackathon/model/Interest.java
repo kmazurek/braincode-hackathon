@@ -3,12 +3,28 @@ package com.zakaprov.braincodemobihackathon.model;
 import com.zakaprov.braincodemobihackathon.callbacks.InterestAuctionsCallback;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Interest
 {
-    private String name;
-    private String imageUrl;
+    protected String title;
+    private int imageUrl;
     private String fancyText;
+
+    private static String[] fancyStrings = {"Look for characters from", "Don't you have enough",
+                                            "Get some gadgets from", "Check what's available for"};
+
+    public Interest()
+    {
+
+    }
+
+    public Interest(String title) {
+        this.title = title;
+        int idx = new Random().nextInt(fancyStrings.length);
+        String random = (fancyStrings[idx]);
+        this.setFancyText(random);
+    }
 
     private ArrayList<Auction> auctionArrayList = new ArrayList<Auction>();
 
@@ -30,15 +46,15 @@ public abstract class Interest
         callback.onDownloadComplete(auctionArrayList.toArray(new Auction[0]));
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(int imageUrl) {
         this.imageUrl = imageUrl;
     }
 
@@ -46,7 +62,7 @@ public abstract class Interest
         this.fancyText = fancyText;
     }
 
-    public String getImageUrl() {
+    public int getImageUrl() {
         return imageUrl;
     }
 

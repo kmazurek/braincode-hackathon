@@ -13,7 +13,7 @@ public class InterestContainer
         interests[2] = new GameInterest("League of Legends");
 
         interests[3] = new BandInterest("Metallica");
-        interests[4] = new BandInterest("Red Hot Chili Peppers");
+        interests[4] = new BandInterest("Red Hot Chilli Peppers");
         interests[5] = new BandInterest("Iron Maiden");
 
         interests[6] = new BookInterest("50 Shades of Grey");

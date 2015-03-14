@@ -1,20 +1,12 @@
 package com.zakaprov.braincodemobihackathon.model;
 
-import java.util.Random;
-
 /**
  * Created by konrad on 13.03.15.
  */
 public class MovieInterest extends Interest {
-    private String title;
-    private static String[] fancyStrings = {"Get some gadgets from", "Check what's available for", "Don't you have enough"};
 
     public MovieInterest(String title) {
-        this.title = title;
-        int idx = new Random().nextInt(fancyStrings.length);
-        String random = (fancyStrings[idx]);
-        this.setFancyText(random);
-        this.setImageUrl(title.toLowerCase().replace(' ', '_') + ".jpg");
+        super(title);
     }
 
     @Override

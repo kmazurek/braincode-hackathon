@@ -48,8 +48,33 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Interest currentInterest = mDataset[position];
 
-        holder.mTextView.setText(currentInterest.getFancyText() + " " + currentInterest.getName());
-        Picasso.with(mContext).load(currentInterest.getImageUrl()).centerCrop().fit().into(holder.mImageView);
+        holder.mTextView.setText(currentInterest.getFancyText() + " " + currentInterest.getTitle());
+        Picasso.with(mContext).load(getImageUrl(currentInterest.getTitle())).centerCrop().fit().into(holder.mImageView);
+    }
+
+    private int getImageUrl(String title)
+    {
+        switch (title)
+        {
+            case "Half Life 3":
+                return R.drawable.half_life_3;
+            case "Assassins Creed":
+                return R.drawable.assassins_creed;
+            case "League of Legends":
+                return R.drawable.league_of_legends;
+            case "Metallica":
+                return R.drawable.metallica;
+            case "Red Hot Chilli Peppers":
+                return R.drawable.red_hot_chili_peppers;
+            case "Iron Maiden":
+                return R.drawable.iron_maiden;
+            case "Interstellar":
+                return R.drawable.interstellar;
+            case "Lord of The Rings":
+                return R.drawable.lord_of_the_rings;
+            default:
+                return R.drawable.interstellar;
+        }
     }
 
     @Override

@@ -62,7 +62,6 @@ public class MainActivity extends ActionBarActivity
                     .commit();
 
             mDrawerList.setItemChecked(position, true);
-            getActionBar().setTitle(mNavigationItems[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
         }
     }
