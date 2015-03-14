@@ -65,13 +65,13 @@ public class InterestContainer
                 bandInterest.setImageUrl(artist.getImageUrl());
                 interestCollection.add(bandInterest);
             }
-            MovieApiMethods movieApiMethods = new MovieApiProvider(MovieApiMethods.class).getApiClient();
-            TopMovies topMovies= movieApiMethods.getTopMovies("1", ApiUtils.MOVIES_API_KEY);
-            for (Movie movie: topMovies.getMovies()) {
-                MovieInterest movieInterest = new MovieInterest(movie.getTitle());
-                movieInterest.setImageUrl(movie.getImageUrl());
-                interestCollection.add(movieInterest);
-            }
+//            MovieApiMethods movieApiMethods = new MovieApiProvider(MovieApiMethods.class).getApiClient();
+//            TopMovies topMovies= movieApiMethods.getTopMovies("1", ApiUtils.MOVIES_API_KEY);
+//            for (Movie movie: topMovies.getMovies()) {
+//                MovieInterest movieInterest = new MovieInterest(movie.getTitle());
+//                movieInterest.setImageUrl(movie.getImageUrl());
+//                interestCollection.add(movieInterest);
+//            }
             ISteamApiMethods steamAPI = new SteamProvider(ISteamApiMethods.class).getApiClient();
             steamOwnedGames = steamAPI.getOwnedGames("76561198047588728", "24BBC0195657976DCC68A69122D23C23");
             List<SteamGame> steamGameList = steamOwnedGames.getResponse().getGames();
