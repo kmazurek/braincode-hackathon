@@ -9,6 +9,13 @@ public class Auction
     private int sellerRating;
     private String price;
 
+    @Override
+    public String toString()
+    {
+
+        return title + " " + imageUrl + " " + price;
+    }
+
     public String getTitle() {
         return title;
     }

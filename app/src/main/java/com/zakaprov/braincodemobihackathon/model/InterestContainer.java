@@ -1,9 +1,7 @@
 package com.zakaprov.braincodemobihackathon.model;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.zakaprov.braincodemobihackathon.R;
 import com.zakaprov.braincodemobihackathon.callbacks.InterestContainerCallback;
 import com.zakaprov.braincodemobihackathon.model.steam.SteamGame;
 import com.zakaprov.braincodemobihackathon.model.steam.SteamOwnedGames;
@@ -17,12 +15,7 @@ import com.zakaprov.braincodemobihackathon.network.rest.utils.ApiUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 public class InterestContainer
 {

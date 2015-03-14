@@ -90,9 +90,6 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
     public AuctionListAdapter(Auction[] myDataset, MainActivity context) {
         mDataset = myDataset;
 
-        // MOCKUP
-        mDataset = generateMockupAuctions();
-
         mMainActivity = context;
     }
 
@@ -114,7 +111,7 @@ public class AuctionListAdapter extends RecyclerView.Adapter<AuctionListAdapter.
         holder.auction = currentAuction;
 
         holder.mTextView.setText(currentAuction.getTitle());
-        Picasso.with(mMainActivity).load(MOCKUP_IDS[position]).centerCrop().fit().into(holder.mImageView);
+        Picasso.with(mMainActivity).load(currentAuction.getImageUrl()).centerCrop().fit().into(holder.mImageView);
     }
 
     private Auction[] generateMockupAuctions()

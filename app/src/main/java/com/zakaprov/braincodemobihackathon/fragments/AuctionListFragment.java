@@ -1,11 +1,8 @@
 package com.zakaprov.braincodemobihackathon.fragments;
 
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.GridLayoutManager;
@@ -28,9 +25,9 @@ import com.zakaprov.braincodemobihackathon.adapters.AuctionListAdapter;
 import com.zakaprov.braincodemobihackathon.callbacks.InterestAuctionsCallback;
 import com.zakaprov.braincodemobihackathon.model.Auction;
 import com.zakaprov.braincodemobihackathon.model.Interest;
-import com.zakaprov.braincodemobihackathon.utils.PaletteTransformation;
 
-import static android.support.v7.widget.RecyclerView.*;
+import static android.support.v7.widget.RecyclerView.Adapter;
+import static android.support.v7.widget.RecyclerView.LayoutManager;
 import static android.support.v7.widget.RecyclerView.OnScrollListener;
 
 public class AuctionListFragment extends AbstractFragment
@@ -61,9 +58,6 @@ public class AuctionListFragment extends AbstractFragment
         MainActivity activity = (MainActivity) getActivity();
         Interest chosenInterest = activity.getChosenInterest();
 
-        // MOCKUP
-//        chosenInterest.getAuctionsAsync(new AuctionListCallback());
-
         View layout = inflater.inflate(R.layout.auction_list_fragment, container, false);
 
         mRecyclerView = (CustomRecyclerView) layout.findViewById(R.id.mainRecyclerView);
@@ -77,9 +71,11 @@ public class AuctionListFragment extends AbstractFragment
         mLayoutManager = new GridLayoutManager(getActivity(), NUMBER_OF_COLUMNS);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        chosenInterest.getAuctionsAsync(new AuctionListCallback());
+
         // MOCKUP
-        mAdapter = new AuctionListAdapter(dataSource, (MainActivity)getActivity());
-        mRecyclerView.setAdapter(mAdapter);
+//        mAdapter = new AuctionListAdapter(dataSource, (MainActivity)getActivity());
+//        mRecyclerView.setAdapter(mAdapter);
         mHeader = (FrameLayout) layout.findViewById(R.id.header);
         mHeaderApla = (FrameLayout) layout.findViewById(R.id.headerApla);
         headerHeight = mHeader.getLayoutParams().height;

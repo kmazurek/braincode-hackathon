@@ -1,5 +1,8 @@
 package com.zakaprov.braincodemobihackathon.model;
 
+import android.os.AsyncTask;
+import android.util.Log;
+
 import com.zakaprov.braincodemobihackathon.callbacks.InterestAuctionsCallback;
 
 import java.util.ArrayList;
@@ -31,6 +34,36 @@ public abstract class Interest
         this.setFancyText(random);
     }
 
+    public Map<String, String> getCategories()
+    {
+        return categories;
+    }
+
+    public void setCategories(Map<String, String> categories)
+    {
+        this.categories = categories;
+    }
+
+    public static String[] getFancyStrings()
+    {
+        return fancyStrings;
+    }
+
+    public static void setFancyStrings(String[] fancyStrings)
+    {
+        Interest.fancyStrings = fancyStrings;
+    }
+
+    public ArrayList<Auction> getAuctionArrayList()
+    {
+        return auctionArrayList;
+    }
+
+    public void setAuctionArrayList(ArrayList<Auction> auctionArrayList)
+    {
+        this.auctionArrayList = auctionArrayList;
+    }
+
     private ArrayList<Auction> auctionArrayList = new ArrayList<Auction>();
 
     protected AllegroQuery[] getQueries() {
@@ -43,18 +76,41 @@ public abstract class Interest
 
     public void getAuctionsAsync(InterestAuctionsCallback callback)
     {
-        auctionArrayList.clear();
-        AllegroQuery[] queries = getQueries();
+        new FetchAuctionsTask(callback).execute();
+    }
+
+    public class FetchAuctionsTask extends AsyncTask<Void, Void, Void>
+    {
+        public FetchAuctionsTask(InterestAuctionsCallback callback) {
+            this.callback = callback;
+        }
+        private InterestAuctionsCallback callback;
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            auctionArrayList.clear();
+            AllegroQuery[] queries = getQueries();
 
             for (AllegroQuery query : queries)
             {
                 Auction[] auctions = query.getData();
 
-                    for (Auction auction : auctions)
-                        auctionArrayList.add(auction);
+                for (Auction auction : auctions)
+                    auctionArrayList.add(auction);
             }
+            return null;
+        }
 
-        callback.onDownloadComplete(auctionArrayList.toArray(new Auction[0]));
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Auction[] auctions = auctionArrayList.toArray(new Auction[0]);
+
+                for (Auction a : auctions)
+                    Log.d("KEK", a.toString());
+
+            callback.onDownloadComplete(auctions);
+        }
     }
 
     public String getTitle() {
