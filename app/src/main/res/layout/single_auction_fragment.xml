@@ -3,6 +3,7 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     >
     <ScrollView
         android:layout_width="fill_parent"
@@ -51,14 +52,14 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="5.50 PLN"
+            android:text="6.00 PLN"
             android:textSize="25dp"
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="center"
             android:textAlignment="center"
             android:layout_gravity="center_vertical"
-            android:id="@+id/" />
+            android:id="@+id/price" />
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -67,11 +68,12 @@
             android:gravity="center"
             android:text="MUSC_SHOP (2500)"
             android:layout_gravity="center_vertical"
-            android:id="@+id/" />
+            android:id="@+id/shop" />
         </LinearLayout>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget hendrerit odio. Phasellus commodo faucibus imperdiet. Ut ut euismod mauris. Pellentesque ultrices vulputate elit. Nullam cursus placerat arcu sollicitudin sollicitudin. Aliquam scelerisque, nunc eget scelerisque vestibulum, augue tellus condimentum ex, at fringilla lectus libero vitae justo. Nunc nec purus vitae diam maximus sodales. Nullam maximus elementum quam ac porttitor.
 
 

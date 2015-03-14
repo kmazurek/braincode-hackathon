@@ -1,6 +1,8 @@
 package com.zakaprov.braincodemobihackathon.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +18,7 @@ import com.zakaprov.braincodemobihackathon.callbacks.InterestAuctionsCallback;
 import com.zakaprov.braincodemobihackathon.model.Auction;
 import com.zakaprov.braincodemobihackathon.model.Interest;
 
-public class AuctionFragment extends AbstractFragment
+public class AuctionFragment extends AbstractFragment implements View.OnClickListener
 {
 
     private Auction auction;
@@ -37,11 +39,20 @@ public class AuctionFragment extends AbstractFragment
 
         FloatingActionButton fab = (FloatingActionButton)layout.findViewById(R.id.fab);
         fab.show();
+        fab.setOnClickListener(this);
 
         return layout;
     }
 
     public void setChosenAuction(Auction auction) {
         this.auction = auction;
+    }
+
+    @Override
+    public void onClick(View v) {
+        String url = "http://allegro.pl/red-hot-chilli-peppers-naszywka-wyszywana-i5104119855.html";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }

@@ -62,6 +62,7 @@ public class MainActivity extends ActionBarActivity
                     break;
 
                     case 1:
+                        chosenFragment = new AuctionFragment();
                     case 2:
                     case 3:
                     case 4:

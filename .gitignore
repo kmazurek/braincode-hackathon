@@ -12,6 +12,6 @@ gen/
 
 .idea/modules.xml
 
-app/app.iml
+/app/app.iml
 
 braincode-hackathon.iml
